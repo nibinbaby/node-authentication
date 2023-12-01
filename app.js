@@ -26,21 +26,21 @@ app.get('/smoothies', (req, res) =>res.render('smoothies'));
 app.use(authRoutes);
 
 
-app.get('/set-cookies', (req, res) =>{
-    // res.setHeader('Set-cookie', 'newUser=true');
-    // the 3rd argument is optional :
-    // it can be maxage for exipiration
-    // secure, for https sites only
-    // httpOnly, to diable the access of cookie through javascript i.e. document.cookie is not gonna give the value
-    res.cookie('newUser', false, {maxAge: 1000*60*60*24, httpOnly: true})
-    res.send('cookies set');
-})
+// app.get('/set-cookies', (req, res) =>{
+//     // res.setHeader('Set-cookie', 'newUser=true');
+//     // the 3rd argument is optional :
+//     // it can be maxage for exipiration
+//     // secure, for https sites only
+//     // httpOnly, to diable the access of cookie through javascript i.e. document.cookie is not gonna give the value
+//     res.cookie('newUser', false, {maxAge: 1000*60*60*24, httpOnly: true})
+//     res.send('cookies set');
+// })
 
 
 
-app.get('/read-cookies', (req, res) =>{
+// app.get('/read-cookies', (req, res) =>{
 
-    const cookies = req.cookies;
-    res.json(cookies);
+//     const cookies = req.cookies;
+//     res.json(cookies);
     
-})
+// })
