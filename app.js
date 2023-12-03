@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const credentials = require('./creds.json');
 const cookie_parser = require('cookie-parser');
+const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 
 const app = express();
 
@@ -20,8 +21,11 @@ mongoose.connect(dbURI)
     .catch((err) => console.log(err));
 
 
+// add checkuser middleware to every avaialble 'get' routes
+app.get('*', checkUser);
+
 app.get('/', (req, res) =>res.render('home'));
-app.get('/smoothies', (req, res) =>res.render('smoothies'));
+app.get('/smoothies', requireAuth, (req, res) =>res.render('smoothies'));
 
 app.use(authRoutes);
 
